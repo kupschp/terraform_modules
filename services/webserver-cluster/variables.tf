@@ -47,7 +47,6 @@ variable "cluster_max_size" {
   type = number
 }
 
-
 variable "custom_tags" {
   description = "custom tags for asg mig template"
   type = map(string)

@@ -33,6 +33,15 @@ resource "aws_autoscaling_group" "ptg-mig" {
     value               = var.cluster_name
     propagate_at_launch = true
   }
+
+  dynamic "tag" {
+    for_each = var.custom_tags
+    content {
+      key = tag.key
+      value = tag.value
+      propagate_at_launch = true
+    }
+  }
 }
 
 resource "aws_security_group" "ptg-instance-sg" {
