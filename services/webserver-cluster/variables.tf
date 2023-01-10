@@ -46,3 +46,10 @@ variable "cluster_max_size" {
   description = "maximum number of instances in a cluster"
   type = number
 }
+
+
+variable "custom_tags" {
+  description = "custom tags for asg mig template"
+  type = map(string)
+  default = {}
+}
