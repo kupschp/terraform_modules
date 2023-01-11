@@ -37,6 +37,12 @@ variable "instance_image" {
   default = "ami-0fb653ca2d3203ac1"
 }
 
+variable "return_message" {
+  description = "webserver returns this message"
+  type = string
+  default = "Hello, world"
+}
+
 variable "cluster_min_size" {
   description = "minimum number of instances in a cluster"
   type = number
@@ -51,4 +57,9 @@ variable "custom_tags" {
   description = "custom tags for asg mig template"
   type = map(string)
   default = {}
+}
+
+variable "enable_autoscaling" {
+  description = "if set to true, enable auto scaling"
+  type = bool
 }

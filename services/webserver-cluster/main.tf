@@ -9,6 +9,7 @@ resource "aws_launch_configuration" "ptg-image-template" {
     server_port = local.server_port
     db_address = data.terraform_remote_state.db.outputs.address
     db_port = data.terraform_remote_state.db.outputs.port
+    return_message = var.return_message
   })
 
   #so that terraform will not destroy first, it creates new instances first before destroying the old one
