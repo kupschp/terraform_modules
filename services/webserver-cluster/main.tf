@@ -20,6 +20,9 @@ resource "aws_launch_configuration" "ptg-image-template" {
 
 #launch instances from ptg image template
 resource "aws_autoscaling_group" "ptg-mig" {
+
+  name = "${var.cluster_name}-${aws_launch_configuration.ptg-image-template.name}"
+
   launch_configuration = aws_launch_configuration.ptg-image-template.name
   vpc_zone_identifier = data.aws_subnets.ptg-subnets.ids
 
@@ -42,6 +45,14 @@ resource "aws_autoscaling_group" "ptg-mig" {
       value = tag.value
       propagate_at_launch = true
     }
+  }
+
+  #wait for atleast this many instance before considering it healthy
+  min_elb_capacity = var.cluster_min_size
+
+  #replace instance before terminating it
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
