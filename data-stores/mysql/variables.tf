@@ -29,3 +29,15 @@ variable "db_storage_size" {
   description = "database storage size"
   type = number
 }
+
+variable "backup_retention_period" {
+  description = "days to retain backups"
+  type = number
+  default = null
+}
+
+variable "replicate_source_db" {
+  description = "if specified, replicate db"
+  type = string
+  default = null
+}

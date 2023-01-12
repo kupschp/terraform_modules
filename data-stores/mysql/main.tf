@@ -10,4 +10,8 @@ resource "aws_db_instance" "ptg-db" {
     #temporarily using local envt variable - not recommended
     username = var.db_username
     password = var.db_password
+
+    backup_retention_period = var.backup_retention_period
+
+    replicate_source_db = var.replicate_source_db
 }
