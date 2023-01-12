@@ -8,9 +8,9 @@ resource "aws_db_instance" "ptg-db" {
 
     replicate_source_db = var.replicate_source_db
 
-    #set params if replicate_source_db isn't set
-    engine = var.replicate_source_db == null ? local.engine : null
-    db_name = var.replicate_source_db == null ? var.db_name : null
-    username = var.replicate_source_db == null ? var.db_username : null
-    password = var.replicate_source_db == null ? var.db_password : null
+    #set db params
+    engine = local.engine
+    db_name = var.db_name
+    username = var.db_username
+    password = var.db_password
 }
