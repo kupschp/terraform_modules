@@ -1,8 +1,3 @@
-variable "region" {
-  description = "AWS region to provision RDS db server"
-  type = string
-}
-
 variable "db_username" {
   description = "database username"
   type = string

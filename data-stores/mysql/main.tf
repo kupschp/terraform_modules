@@ -1,5 +1,4 @@
 resource "aws_db_instance" "ptg-db" {
-    provider = var.region
     identifier_prefix = "${var.identifier_prefix}-db"
     engine = local.engine
     allocated_storage = var.db_storage_size
